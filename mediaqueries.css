@@ -19,6 +19,9 @@
   #hamburger-nav {
     display: flex;
   }
+  nav {
+    padding: 0 5%;
+  }
   #experience,
   .experience-details-container {
     margin-top: 2rem;
@@ -48,6 +51,12 @@
 }
 
 @media screen and (max-width: 600px) {
+  .theme-toggle {
+    padding: 0.45rem 0.6rem;
+  }
+  .theme-toggle__text {
+    display: none;
+  }
   #contact,
   footer {
     height: 40vh;
