@@ -21,6 +21,7 @@
   --button-hover-background-color: #000000;
   --button-text-contrast: #ffffff;
   --button-outline-color: #ffffff;
+  --icon-filter: none;
 }
 
 body.dark-theme {
@@ -42,6 +43,7 @@ body.dark-theme {
   --button-hover-background-color: #ffffff;
   --button-text-contrast: #121212;
   --button-outline-color: #f0f0f0;
+  --icon-filter: brightness(0) invert(1);
 }
 
 * {
@@ -304,6 +306,8 @@ section {
 .icon {
   cursor: pointer;
   height: 2rem;
+  filter: var(--icon-filter);
+  transition: filter 300ms ease;
 }
 
 /* BUTTONS */
