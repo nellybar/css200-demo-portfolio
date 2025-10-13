@@ -12,17 +12,22 @@
 <body>
 <nav id="desktop-nav">
 <div class="logo">Nelly Barrera</div>
-<div>
+<div class="nav-actions">
 <ul class="nav-links">
 <li><a href="#about">About</a></li>
 <li><a href="#experience">Experience</a></li>
 <li><a href="#projects">Projects</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
+<button aria-label="Switch to dark theme" class="theme-toggle" data-theme-toggle type="button">
+<span aria-hidden="true" class="theme-toggle__icon">🌙</span>
+<span class="theme-toggle__text">Dark mode</span>
+</button>
 </div>
 </nav>
 <nav id="hamburger-nav">
 <div class="logo">Nelly Barrera</div>
+<div class="nav-actions">
 <div class="hamburger-menu">
 <div class="hamburger-icon" onclick="toggleMenu()">
 <span></span>
@@ -35,6 +40,11 @@
 <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
 <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
 </div>
+</div>
+<button aria-label="Switch to dark theme" class="theme-toggle" data-theme-toggle type="button">
+<span aria-hidden="true" class="theme-toggle__icon">🌙</span>
+<span class="theme-toggle__text">Dark mode</span>
+</button>
 </div>
 </nav>
 <section id="profile">
@@ -241,6 +251,7 @@
 </div>
 </section>
 <div id="footer-root"></div>
-<script src="/src/main.jsx" type="module"></script><script src="script.js"></script>
+<script src="/src/main.jsx" type="module"></script>
+<script src="./script.js" type="module"></script>
 </body>
 </html>
