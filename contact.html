@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Nelly Barrera</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body class="contact-page">
+    <nav id="desktop-nav">
+      <div class="logo">Nelly Barrera</div>
+      <div class="nav-actions">
+        <ul class="nav-links">
+          <li><a href="./index.html#about">About</a></li>
+          <li><a href="./index.html#experience">Experience</a></li>
+          <li><a href="./index.html#projects">Projects</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+      </div>
+    </nav>
+
+    <nav id="hamburger-nav">
+      <div class="logo">Nelly Barrera</div>
+      <div class="nav-actions">
+        <div class="hamburger-menu">
+          <div class="hamburger-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="menu-links">
+            <li><a href="./index.html#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="./index.html#experience" onclick="toggleMenu()">Experience</a></li>
+            <li><a href="./index.html#projects" onclick="toggleMenu()">Projects</a></li>
+            <li><a href="./contact.html" onclick="toggleMenu()">Contact</a></li>
+          </div>
+        </div>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="contact-page__content">
+      <div id="contact-root"></div>
+    </div>
+
+    <div id="footer-root"></div>
+
+    <script type="module" src="/src/contact-main.jsx"></script>
+    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
