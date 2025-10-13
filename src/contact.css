@@ -1,0 +1,215 @@
+.contact-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.contact-page__content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem) 6rem;
+}
+
+.contact {
+  width: min(60rem, 100%);
+  background-color: var(--surface-alt-color);
+  border: 1px solid var(--surface-border-color);
+  border-radius: 1.5rem;
+  padding: clamp(2.5rem, 4vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .contact {
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
+}
+
+.contact__title {
+  font-size: clamp(2.5rem, 4vw, 3.25rem);
+  text-align: center;
+}
+
+.contact__intro {
+  font-size: 1.05rem;
+  text-align: center;
+  line-height: 1.6;
+  color: var(--muted-text-color);
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.contact__row {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.contact__row.two-cols > .contact__field {
+  flex: 1;
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.contact__field--full {
+  width: 100%;
+}
+
+.contact__field label {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.contact__field input,
+.contact__field textarea {
+  border: 1px solid var(--surface-border-color);
+  border-radius: 0.85rem;
+  padding: 0.9rem 1.1rem;
+  background-color: var(--surface-color);
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.contact__field textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.contact__field input:focus,
+.contact__field textarea:focus {
+  outline: none;
+  border-color: var(--button-background-color);
+  box-shadow: 0 0 0 4px rgba(53, 53, 53, 0.12);
+}
+
+body.dark-theme .contact__field input:focus,
+body.dark-theme .contact__field textarea:focus {
+  box-shadow: 0 0 0 4px rgba(240, 240, 240, 0.2);
+}
+
+.contact__error {
+  font-size: 0.9rem;
+  color: #d93025;
+}
+
+.contact__form-error {
+  border-radius: 0.85rem;
+  background-color: rgba(217, 48, 37, 0.1);
+  color: #d93025;
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+}
+
+.contact__actions--outside {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contact__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid var(--button-border-color);
+  background-color: var(--button-background-color);
+  color: var(--button-text-contrast);
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+
+.contact__btn:hover:not(:disabled),
+.contact__btn:focus-visible {
+  background-color: var(--button-hover-background-color);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.contact__btn:focus-visible {
+  outline: 3px solid var(--button-outline-color);
+  outline-offset: 2px;
+}
+
+.contact__btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+  box-shadow: none;
+}
+
+.contact__thankyou {
+  width: min(50rem, 100%);
+  margin: 0 auto;
+  background-color: var(--surface-alt-color);
+  border: 1px solid var(--surface-border-color);
+  border-radius: 1.5rem;
+  padding: clamp(2.5rem, 4vw, 3.5rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .contact__thankyou {
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
+}
+
+.contact__thankyou h1 {
+  font-size: clamp(2.25rem, 3.5vw, 3rem);
+}
+
+.contact__thankyou p {
+  color: var(--muted-text-color);
+  font-size: 1.05rem;
+}
+
+@media (max-width: 900px) {
+  .contact__row.two-cols {
+    flex-direction: column;
+  }
+
+  .contact__actions--outside {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact {
+    padding: clamp(2rem, 8vw, 2.5rem);
+    gap: 1.5rem;
+  }
+
+  .contact__title {
+    font-size: clamp(2.2rem, 8vw, 2.6rem);
+  }
+
+  .contact__intro {
+    font-size: 1rem;
+  }
+
+  .contact__row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact__btn {
+    width: 100%;
+  }
+}
