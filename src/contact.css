@@ -74,6 +74,7 @@ body.dark-theme .contact {
 
 .contact__field input,
 .contact__field textarea {
+  font-family: inherit;
   border: 1px solid var(--surface-border-color);
   border-radius: 0.85rem;
   padding: 0.9rem 1.1rem;
@@ -119,6 +120,7 @@ body.dark-theme .contact__field textarea:focus {
 }
 
 .contact__btn {
+  font-family: inherit;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -181,6 +183,12 @@ body.dark-theme .contact__thankyou {
 }
 
 @media (max-width: 900px) {
+  .contact {
+    width: 85%; /* Limit width to 90% of screen */
+    max-width: 600px; /* Optional: constrain max width */
+    margin: 0 auto; /* Center container */
+  }
+
   .contact__row.two-cols {
     flex-direction: column;
   }

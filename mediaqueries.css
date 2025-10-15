@@ -1,4 +1,8 @@
 @media screen and (max-width: 1400px) {
+  body {
+    margin: 2rem;
+  }
+
   #profile {
     height: 83vh;
     margin-bottom: 6rem;
@@ -45,6 +49,11 @@
     height: 275px;
     margin: 0 auto 2rem;
   }
+  .section__pic-container-about {
+    width: 275px;
+    height: 275px;
+    margin: 0 auto 2rem;
+  }
   .about-containers {
     margin-top: 0;
   }
@@ -52,7 +61,8 @@
 
 @media screen and (max-width: 600px) {
   .theme-toggle {
-    padding: 0.45rem 0.6rem;
+    padding: 0.45rem 0.6rem ;
+    margin: 1rem;
   }
   .theme-toggle__text {
     display: none;
