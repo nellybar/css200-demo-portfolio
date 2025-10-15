@@ -27,26 +27,35 @@
       </button>
     </div>
   </nav>
-  <nav id="hamburger-nav">
+  <nav id="hamburger-nav" class="mobile-nav" aria-label="Mobile navigation">
     <a class="logo" href="./index.html">Nelly Barrera</a>
     <div class="nav-actions">
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="./contact.html" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
+      <button class="mobile-nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="sr-only">Toggle navigation menu</span>
+        <svg class="mobile-nav__icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 50 50"
+          aria-hidden="true" focusable="false">
+          <title>Toggle menu</title>
+          <g>
+            <line class="mobile-nav__icon-bar" x1="13" y1="16.5" x2="37" y2="16.5" />
+            <line class="mobile-nav__icon-bar" x1="13" y1="24.5" x2="37" y2="24.5" />
+            <line class="mobile-nav__icon-bar" x1="13" y1="32.5" x2="37" y2="32.5" />
+            <circle class="mobile-nav__icon-circle" r="23" cx="25" cy="25" />
+          </g>
+        </svg>
+      </button>
       <button aria-label="Switch to dark theme" class="theme-toggle" data-theme-toggle type="button">
         <span aria-hidden="true" class="theme-toggle__icon">🌙</span>
         <span class="theme-toggle__text">Dark mode</span>
       </button>
+    </div>
+    <div class="mobile-nav__overlay" hidden>
+      <div class="mobile-nav__splash" aria-hidden="true"></div>
+      <ul class="mobile-nav__menu" id="mobile-menu" tabindex="-1">
+        <li class="mobile-nav__item"><a class="mobile-nav__link" href="#about">About</a></li>
+        <li class="mobile-nav__item"><a class="mobile-nav__link" href="#experience">Experience</a></li>
+        <li class="mobile-nav__item"><a class="mobile-nav__link" href="#projects">Projects</a></li>
+        <li class="mobile-nav__item"><a class="mobile-nav__link" href="./contact.html">Contact</a></li>
+      </ul>
     </div>
   </nav>
   <section id="profile">
