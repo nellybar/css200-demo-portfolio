@@ -76,3 +76,115 @@ if (prefersDarkScheme) {
     prefersDarkScheme.addListener(handleSystemThemeChange);
   }
 }
+
+
+
+const reduceMotionQuery =
+  typeof window.matchMedia === "function"
+    ? window.matchMedia("(prefers-reduced-motion: reduce)")
+    : null;
+
+const ROLLING_DELAY_STEP = 0.015;
+const ROLLING_INTRO_DELAY = 600;
+
+const heroTitle = document.querySelector(".hero-title");
+
+if (heroTitle && !heroTitle.dataset.rollingProcessed) {
+  const originalText = heroTitle.textContent.trim();
+
+  if (originalText.length > 0) {
+    const characters = Array.from(originalText);
+
+    const createBlock = () => {
+      const block = document.createElement("span");
+      block.classList.add("rolling-text__block");
+      block.setAttribute("aria-hidden", "true");
+
+      characters.forEach((character, index) => {
+        const letter = document.createElement("span");
+        letter.classList.add("rolling-text__letter");
+        letter.textContent = character === " " ? "\u00a0" : character;
+        letter.dataset.letterIndex = String(index);
+        block.appendChild(letter);
+      });
+
+      return block;
+    };
+
+    heroTitle.classList.add("rolling-text");
+    heroTitle.setAttribute("aria-label", originalText);
+    heroTitle.textContent = "";
+    heroTitle.dataset.rollingProcessed = "true";
+
+    const primaryBlock = createBlock();
+    const secondaryBlock = createBlock();
+
+    heroTitle.append(primaryBlock, secondaryBlock);
+
+    const letterNodes = heroTitle.querySelectorAll(".rolling-text__letter");
+
+    const applyMotionPreferences = (shouldReduce) => {
+      heroTitle.classList.toggle("rolling-text--static", shouldReduce);
+
+      letterNodes.forEach((letter) => {
+        if (shouldReduce) {
+          letter.style.transitionDuration = "0s";
+          letter.style.transitionDelay = "0s";
+        } else {
+          const index = Number.parseInt(letter.dataset.letterIndex ?? "0", 10) || 0;
+          letter.style.transitionDuration = "var(--hero-rolling-duration)";
+          letter.style.transitionDelay = `${index * ROLLING_DELAY_STEP}s`;
+        }
+      });
+
+      if (shouldReduce) {
+        heroTitle.classList.remove("play");
+      }
+    };
+
+    const initializeAnimation = () => {
+      if (reduceMotionQuery && reduceMotionQuery.matches) {
+        applyMotionPreferences(true);
+        return;
+      }
+
+      applyMotionPreferences(false);
+
+      const activateIntro = () => {
+        heroTitle.classList.add("play");
+      };
+
+      window.setTimeout(activateIntro, ROLLING_INTRO_DELAY);
+
+      const cancelIntro = () => {
+        heroTitle.classList.remove("play");
+      };
+
+      heroTitle.addEventListener("pointerenter", cancelIntro);
+      heroTitle.addEventListener("pointerdown", cancelIntro);
+      heroTitle.addEventListener("focusin", cancelIntro);
+    };
+
+    initializeAnimation();
+
+    if (reduceMotionQuery) {
+      const handleMotionPreferenceChange = (event) => {
+        const shouldReduce = event.matches;
+        applyMotionPreferences(shouldReduce);
+        if (!shouldReduce) {
+          window.requestAnimationFrame(() => {
+            window.setTimeout(() => {
+              heroTitle.classList.add("play");
+            }, ROLLING_INTRO_DELAY);
+          });
+        }
+      };
+
+      if (typeof reduceMotionQuery.addEventListener === "function") {
+        reduceMotionQuery.addEventListener("change", handleMotionPreferenceChange);
+      } else if (typeof reduceMotionQuery.addListener === "function") {
+        reduceMotionQuery.addListener(handleMotionPreferenceChange);
+      }
+    }
+  }
+}
